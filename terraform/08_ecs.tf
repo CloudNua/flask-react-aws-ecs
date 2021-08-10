@@ -12,12 +12,14 @@ data "template_file" "client-app" {
 }
 
 data "template_file" "users-app" {
-  template = file("templates/users_app.json.tpl")
+  template   = file("templates/users_app.json.tpl")
+  depends_on = [aws_db_instance.production]
 
   vars = {
     docker_image_url_users = var.docker_image_url_users
     region                 = var.region
     secret_key             = var.secret_key
+    database_url           = "postgres://webapp:${var.rds_password}@${aws_db_instance.production.endpoint}/api_prod"
   }
 }
 
@@ -41,6 +43,7 @@ resource "aws_ecs_task_definition" "users-app" {
   memory                   = "512"
   cpu                      = "256"
   container_definitions    = data.template_file.users-app.rendered
+  depends_on               = [aws_db_instance.production]
 }
 
 resource "aws_ecs_service" "client-fargate" {

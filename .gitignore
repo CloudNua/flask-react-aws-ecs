@@ -4,3 +4,9 @@ htmlcov
 .coverage
 node_modules
 config.py
+
+# TF
+terraform/.terraform.lock.hcl
+terraform/.terraform/
+terraform/terraform.tfstate
+terraform.tfstate.backup

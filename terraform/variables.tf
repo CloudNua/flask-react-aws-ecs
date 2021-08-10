@@ -76,3 +76,22 @@ variable "secret_key" {
   description = "Flask Secret Key"
   default     = "foobar"
 }
+
+
+# rds
+
+variable "rds_db_name" {
+  description = "RDS database name"
+  default     = "api_prod"
+}
+variable "rds_username" {
+  description = "RDS database username"
+  default     = "webapp"
+}
+variable "rds_password" {
+  description = "RDS database password"
+}
+variable "rds_instance_class" {
+  description = "RDS instance type"
+  default     = "db.t2.micro"
+}

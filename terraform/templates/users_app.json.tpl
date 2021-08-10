@@ -23,6 +23,10 @@
       {
         "name": "SECRET_KEY",
         "value": "${secret_key}"
+      },
+      {
+        "name": "DATABASE_URL",
+        "value": "${database_url}"
       }
     ],
     "logConfiguration": {
