@@ -11,6 +11,18 @@
         "protocol": "tcp"
       }
     ],
+    "command": [
+      "gunicorn",
+      "manage:app",
+      "-b",
+      ":5000",
+      "-w",
+      "3",
+      "--log-level=debug"
+    ],
+    "entrypoint": [
+      "/usr/src/app/entrypoint.prod.sh"
+    ],
     "environment": [
       {
         "name": "APP_SETTINGS",
